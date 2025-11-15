@@ -1,0 +1,11 @@
+.Box {
+    border: 5px solid black;
+    width: 250px;
+    padding: 20px;
+    li{font-size: 30px;}
+    position: relative;
+    top: 100px;
+    left: 500px;
+    button{size: 10px;}
+    
+}
