@@ -1,21 +1,32 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "./style.css";
 
 function App() {
+  // You can keep count if you need it later, otherwise you can delete it
   const [count, setCount] = useState(0);
-  const [item, setItem] = useState([1, 2]);
+
+  // List of items
+  const [items, setItems] = useState(["Soup", "Chicken", "Eggs"]);
+
+  // Controlled input value
+  const [newItem, setNewItem] = useState("");
 
   const add = () => {
-    setItem([...item, item.length + 1]);
+    // ignore empty / whitespace-only entries
+    if (!newItem.trim()) return;
+
+    // add the new item to the end of the list
+    setItems([...items, newItem.trim()]);
+
+    // clear the input
+    setNewItem("");
   };
 
   const remove = () => {
-    if (item.length > 0) {
-      // use parentheses, not square brackets
-      setItem(item.slice(0, -1));
+    if (items.length > 0) {
+      // remove the last item
+      setItems(items.slice(0, -1));
     }
   };
 
@@ -24,9 +35,17 @@ function App() {
       <div>
         <h1>Hello!</h1>
         <p>How are you?</p>
+
+        <input
+          type="text"
+          placeholder="What do you want to add?"
+          value={newItem}
+          onChange={(e) => setNewItem(e.target.value)}
+        />
+
         <ul>
-          {item.map((num) => (
-            <li key={num}>{num}</li>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
         </ul>
 
