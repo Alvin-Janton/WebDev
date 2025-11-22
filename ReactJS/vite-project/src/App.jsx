@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import "./style.css";
+import { itemList } from "./itemList";
 
 function App() {
   // You can keep count if you need it later, otherwise you can delete it
@@ -11,6 +12,8 @@ function App() {
 
   // Controlled input value
   const [newItem, setNewItem] = useState("");
+
+
 
   const add = () => {
     // ignore empty / whitespace-only entries
@@ -30,6 +33,8 @@ function App() {
     }
   };
 
+  
+
   return (
     <>
       <div>
@@ -45,7 +50,9 @@ function App() {
 
         <ul>
           {items.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index}>{item}
+                <button>X</button>
+            </li>
           ))}
         </ul>
 
